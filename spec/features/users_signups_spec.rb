@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "UsersSignups", type: :feature do
+describe "the signup process" do 
 
-	describe "when passing in invalid information" do 
-		it "should return errors and render current page" do 
+	describe "when passing in invalid information" do
+		it "should return errors and render current page" do
 			visit signup_path
 			fill_in "Name",         with: " "
 			fill_in "Email",        with: "aslknf"
@@ -14,8 +14,8 @@ RSpec.describe "UsersSignups", type: :feature do
 		end
 	end
 
-	describe "when passing in valid information" do  
-		it "should save the user to the database and redirect to profile" do 
+	describe "when passing in valid information" do
+		it "should save the user to the database and redirect to profile" do
 			visit signup_path
 			fill_in "Name",         with: "Example User"
 			fill_in "Email",        with: "user@example.com"
