@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "the signup process" do 
+describe "the signup process" do
 
 	describe "when passing in invalid information" do
 		it "should return errors and render current page" do
@@ -24,5 +24,24 @@ describe "the signup process" do
 			click_button "Create my account"
 			expect(page).to_not have_content("errors")
 		end
+
+		it "should send an email" do
+			ActionMailer::Base.deliveries.count.should == 1
+		end
+
+		it "should send an email to the correct user" do
+			ActionMailer::Base.deliveries.first.to.should == ["user@example.com"]
+		end
+
+		# Pending
+		# it "should come from the correct address" do
+		# 	ActionMailer::Base.deliveries.first.from.should ==
+		# end
+
+		# Pending
+		# it 'should set the subject to the correct subject' do
+		#   ActionMailer::Base.deliveries.first.subject.should == 'Welcome!'
+		# end
+
 	end
 end

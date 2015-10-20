@@ -1,5 +1,6 @@
 require 'factory_girl_rails'
 require 'simplecov'
+require 'email_spec'
 
 SimpleCov.start
 
@@ -13,4 +14,7 @@ RSpec.configure do |config|
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
   end
+
+  config.include(EmailSpec::Helpers)
+  config.include(EmailSpec::Matchers)
 end
